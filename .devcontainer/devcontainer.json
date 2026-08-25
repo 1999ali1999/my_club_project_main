@@ -1,0 +1,19 @@
+{
+  "name": "Flutter IDX Replacement Workspace",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart-code"
+      ],
+      "settings": {
+        "dart.flutterSdkPath": "/home/vscode/flutter",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  "postCreateCommand": "flutter pub upgrade --major-versions"
+}
