@@ -1,0 +1,102 @@
+{
+  "appConfig": {
+    "globalAdCode": "<div style='color:white; text-align:center;'>إعلان سائل هنا</div>",
+    "watermark": {
+      "enabled": true,
+      "url": "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/assets/watermark.png",
+      "opacity": 0.6,
+      "width": "80px",
+      "top": "20px",
+      "left": "auto",
+      "right": "20px",
+      "bottom": "auto"
+    }
+  },
+  "home": {
+    "heroData": {
+      "targetId": "movie_001",
+      "title": "فيلم الأكشن المنتظر",
+      "posterUrl": "https://image.tmdb.org/t/p/original/hero_image.jpg"
+    },
+    "sections": [
+      {
+        "titleKey": "trending",
+        "type": "horizontal_list",
+        "items": [
+          { "id": "movie_001", "imageUrl": "https://image.tmdb.org/t/p/w500/poster1.jpg" },
+          { "id": "movie_002", "imageUrl": "https://image.tmdb.org/t/p/w500/poster2.jpg" }
+        ]
+      }
+    ]
+  },
+  "content": {
+    "movie_001": {
+      "id": "movie_001",
+      "title": "المهمة المستحيلة",
+      "rating": "8.5",
+      "releaseYear": "2026",
+      "ageRating": "+13",
+      "overview": "وصف تفصيلي للفيلم يظهر في قسم المعلومات...",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/poster1.jpg",
+      "customAdCode": "",
+      "seasons": [
+        {
+          "id": "s1",
+          "titleKey": "Season 1",
+          "episodes": [
+            {
+              "id": "ep1",
+              "title": "الحلقة الأولى",
+              "duration": "45:00",
+              "thumbnailUrl": "https://image.tmdb.org/t/p/w300/thumb1.jpg",
+              "sources": [
+                {
+                  "quality": "1080p",
+                  "urls": [
+                    "https://server1.example.com/1080/master.m3u8",
+                    "https://server2.example.com/1080/master.m3u8"
+                  ]
+                },
+                {
+                  "quality": "720p",
+                  "urls": [
+                    "https://server1.example.com/720/master.m3u8"
+                  ]
+                }
+              ],
+              "subtitles": {
+                "ar": "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/subs/ar.vtt",
+                "en": "https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/subs/en.vtt"
+              }
+            }
+          ]
+        }
+      ],
+      "recommendations": [
+        { "id": "movie_002", "imageUrl": "https://image.tmdb.org/t/p/w500/poster2.jpg" }
+      ]
+    }
+  },
+  "searchSuggestions": [
+    { "id": "movie_001", "imageUrl": "https://image.tmdb.org/t/p/w500/poster1.jpg", "title": "المهمة المستحيلة" },
+    { "id": "movie_002", "imageUrl": "https://image.tmdb.org/t/p/w500/poster2.jpg", "title": "فيلم آخر" }
+  ],
+  "dynamicPages": {
+    "action_movies": {
+      "title": "أفلام الأكشن",
+      "sections": [
+        {
+          "type": "banner",
+          "imageUrl": "https://image.tmdb.org/t/p/original/banner_action.jpg",
+          "targetId": "movie_001"
+        },
+        {
+          "type": "grid",
+          "items": [
+            { "id": "movie_001", "imageUrl": "https://image.tmdb.org/t/p/w500/poster1.jpg" }
+          ]
+        }
+      ]
+    }
+  }
+}
