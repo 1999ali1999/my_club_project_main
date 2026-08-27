@@ -4,7 +4,6 @@ import '../services/remote_config_service_impl.dart';
 import '../../features/home/presentation/controllers/home_controller_impl.dart';
 import '../../features/watch/presentation/controllers/watch_controller_impl.dart';
 
-/// نظام بسيط وخفيف لحقن الاعتمادات (DI)
 class Locator {
   static final Locator _instance = Locator._internal();
   factory Locator() => _instance;
@@ -13,15 +12,16 @@ class Locator {
   late final GlobalKey<NavigatorState> navigatorKey;
   late final RemoteConfigService remoteConfigService;
   
-  // المتحكمات
   late final HomeControllerImpl homeController;
   late final WatchControllerImpl watchController;
 
   void setup() {
     navigatorKey = GlobalKey<NavigatorState>();
     remoteConfigService = RemoteConfigServiceImpl();
-    
-    // تمرير الخدمة للمتحكمات لربطها بالـ JSON الديناميكي
+  }
+
+  // تم استحداث هذه الدالة لتُستدعى (بعد) جلب البيانات من GitHub
+  void initControllers() {
     homeController = HomeControllerImpl(remoteConfigService, navigatorKey);
     watchController = WatchControllerImpl(remoteConfigService, navigatorKey);
   }

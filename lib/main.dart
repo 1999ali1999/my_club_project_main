@@ -4,15 +4,18 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_colors.dart';
 
 void main() async {
-  // تهيئة محرك Flutter (خاصة للـ Web)
   WidgetsFlutterBinding.ensureInitialized();
   
-  // تهيئة حقن الاعتمادات
+  // 1. تهيئة الروابط والخدمات
   locator.setup();
   
-  // جلب البيانات الديناميكية من الـ Remote JSON قبل رسم أول إطار (Frame)
+  // 2. انتظار جلب ملف الـ JSON بالكامل من GitHub
   await locator.remoteConfigService.fetchAndParseConfig();
+  
+  // 3. حقن البيانات في المتحكمات (الآن فقط أصبحت البيانات جاهزة للواجهة)
+  locator.initControllers();
 
+  // 4. تشغيل التطبيق ورسم الإطار الأول
   runApp(const VideoEngineApp());
 }
 
@@ -32,7 +35,7 @@ class VideoEngineApp extends StatelessWidget {
           error: AppColors.danger,
         ),
         useMaterial3: true,
-        fontFamily: 'Cairo', // نفس الخط المستخدم في المشروع الأصلي
+        fontFamily: 'Cairo',
       ),
       navigatorKey: locator.navigatorKey,
       onGenerateRoute: AppRouter.generateRoute,

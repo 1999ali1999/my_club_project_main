@@ -20516,7 +20516,9 @@ q.a!==$&&A.ba()
 p=q.a=new A.bl(null,t.b7)
 q.b!==$&&A.ba()
 o=q.b=new A.a1X()
-n=A.d([],t.jw)
+s=2
+return A.K(o.q7(),$async$afY)
+case 2:n=A.d([],t.jw)
 m=$.aN()
 n=new A.v3(o,p,n,m)
 n.Jl()
@@ -20524,9 +20526,7 @@ q.c!==$&&A.ba()
 q.c=n
 q.d!==$&&A.ba()
 q.d=new A.yH(o,p,m)
-s=2
-return A.K(o.q7(),$async$afY)
-case 2:if($.ae==null)A.anJ()
+if($.ae==null)A.anJ()
 q=$.ae
 q.toString
 p=$.am().gbQ().b

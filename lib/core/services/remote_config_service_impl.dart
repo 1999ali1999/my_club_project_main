@@ -1,23 +1,18 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart'; // للوصول إلى debugPrint
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-
 import 'remote_config_service.dart';
 
 class RemoteConfigServiceImpl implements RemoteConfigService {
-  // تم تصحيح التسمية لتصبح lowerCamelCase (إصلاح 5)
-  static const String remoteJsonUrl =
-      "https://raw.githubusercontent.com/ben10show1999/club_1/refs/heads/main/config_1.json";
+  // رابطك الحقيقي
+  static const String remoteJsonUrl = "https://raw.githubusercontent.com/ben10show1999/club_1/refs/heads/main/config_1.json";
 
   Map<String, dynamic>? _cachedData;
 
   @override
   Future<void> fetchAndParseConfig() async {
     try {
-      final uri = Uri.parse(
-        '$remoteJsonUrl?t=${DateTime.now().millisecondsSinceEpoch}',
-      );
+      final uri = Uri.parse('$remoteJsonUrl?t=${DateTime.now().millisecondsSinceEpoch}');
       final response = await http.get(uri);
 
       if (response.statusCode == 200) {
@@ -26,7 +21,6 @@ class RemoteConfigServiceImpl implements RemoteConfigService {
         throw Exception('Failed to load JSON: ${response.statusCode}');
       }
     } catch (e) {
-      // تم استبدال print بـ debugPrint لبيئة الإنتاج (إصلاح 6)
       debugPrint('Error fetching config: $e');
     }
   }
