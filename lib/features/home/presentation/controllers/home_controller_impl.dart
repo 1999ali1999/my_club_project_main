@@ -3,6 +3,7 @@ import 'home_controller.dart';
 import '../../domain/models/home_models.dart';
 import '../../../../core/services/remote_config_service.dart';
 import '../../../../core/router/app_router.dart';
+// تمت إزالة الاستيراد غير المستخدم لنموذج view_all_models
 
 class HomeControllerImpl extends ChangeNotifier implements HomeController {
   final RemoteConfigService _api;
@@ -16,7 +17,6 @@ class HomeControllerImpl extends ChangeNotifier implements HomeController {
   HeroData? _heroData;
   List<HomeSection> _sections = [];
   
-  // تجاهل تحذير final لأننا سنعدلها عند ربط نظام الإشعارات (إصلاح 13)
   // ignore: prefer_final_fields
   int _unreadCount = 0;
 
@@ -70,7 +70,13 @@ class HomeControllerImpl extends ChangeNotifier implements HomeController {
   }
 
   @override
-  void onViewAllTap(String titleKey, List<MovieItem> items) {}
+  void onViewAllTap(String titleKey, List<MovieItem> items) {
+    final args = (
+      titleKey: titleKey,
+      items: items.map((i) => (id: i.id, imageUrl: i.imageUrl)).toList(),
+    );
+    _navigator.currentState?.pushNamed(AppRouter.viewAllRoute, arguments: args);
+  }
 
   @override
   void onMovieTap(String id) {
